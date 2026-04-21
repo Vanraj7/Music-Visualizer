@@ -1,0 +1,245 @@
+/* App.css — Root layout */
+
+/* =============================================
+   APP SHELL
+   ============================================= */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 20px 12px;
+  gap: 16px;
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+.app__header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.app__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app__logo-mark {
+  font-size: 1.6rem;
+  color: var(--accent-cyan);
+  filter: drop-shadow(0 0 8px rgba(0, 245, 212, 0.6));
+  line-height: 1;
+  animation: logo-pulse 4s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px  rgba(0, 245, 212, 0.6)); }
+  50%       { filter: drop-shadow(0 0 18px rgba(0, 245, 212, 0.9)); }
+}
+
+.app__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.app__tagline {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+/* =============================================
+   MAIN CONTENT AREA
+   ============================================= */
+.app__main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 16px;
+  flex: 1;
+  min-height: 0; /* Important: allow canvas to shrink */
+}
+
+/* ---- Canvas Area ---- */
+.app__canvas-area {
+  min-height: 400px;
+  /* Let the canvas fill all available space */
+  display: flex;
+  flex-direction: column;
+}
+
+.app__canvas-area > * {
+  flex: 1;
+}
+
+/* ---- Sidebar ---- */
+.app__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.app__card {
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.app__section-title {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* =============================================
+   CONTROLS FOOTER
+   ============================================= */
+.app__controls {
+  /* Sticks to the bottom */
+  margin-top: auto;
+}
+
+/* =============================================
+   RESPONSIVE: Stack on smaller screens
+   ============================================= */
+@media (max-width: 820px) {
+  .app {
+    padding: 14px 14px 10px;
+    gap: 12px;
+  }
+
+  .app__main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .app__canvas-area {
+    min-height: 280px;
+    height: 280px;
+  }
+
+  .app__sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .app__sidebar > * {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .app__tagline { display: none; }
+}
+
+@media (max-width: 480px) {
+  .app__canvas-area {
+    min-height: 220px;
+    height: 220px;
+  }
+}
+
+/* ---- Song Info ---- */
+.app__song-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  max-width: 280px;
+  animation: song-appear 0.4s ease;
+}
+
+@keyframes song-appear {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.app__song-cover {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.app__song-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.app__song-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app__song-artist {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-cyan);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Keyboard Shortcuts card ---- */
+.app__shortcuts-card {
+  flex-shrink: 0;
+}
+
+.shortcut-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shortcut-row span {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  padding: 2px 6px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-bright);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-cyan);
+  white-space: nowrap;
+  flex-shrink: 0;
+}

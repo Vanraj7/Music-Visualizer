@@ -1,0 +1,100 @@
+/* FrequencyMeter.css */
+
+.freq-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.freq-meter__title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ---- Bands ---- */
+.freq-meter__bands {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.freq-meter__band {
+  display: grid;
+  grid-template-columns: 44px 1fr 28px;
+  align-items: center;
+  gap: 8px;
+}
+
+.freq-meter__band-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.freq-meter__bar-track {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--bg-panel);
+  overflow: hidden;
+}
+
+.freq-meter__bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.08s ease;
+  min-width: 2px;
+}
+
+.freq-meter__band-value {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+/* ---- Stats ---- */
+.freq-meter__stats {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.freq-meter__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  background: var(--bg-panel);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.freq-meter__stat--accent .freq-meter__stat-value {
+  color: var(--accent-cyan);
+}
+
+.freq-meter__stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.freq-meter__stat-value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
